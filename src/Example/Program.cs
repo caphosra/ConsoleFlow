@@ -13,25 +13,37 @@ namespace TerminalFlow.Example
         static void Main(string[] args)
         {
             Console.Clear();
+            Console.SetCursorPosition(0, 0);
 
-            var console = new ConsoleFlow();
-
-            var firstProgress = new ProgressBar(title: "First", length: 100);
-            console.Add(firstProgress);
-
-            var secondProgress = new ProgressBar(title: "Second", length: 100);
-            console.Add(secondProgress);
-
-            console.Display();
-
-            var finishedTaskCount = 0f;
-            while(finishedTaskCount <= 500f)
+            using(var flow = new ConsoleFlow())
             {
-                if(finishedTaskCount <= 250f) firstProgress.Value = finishedTaskCount / 250f;
-                else secondProgress.Value = (finishedTaskCount - 250f) / 250f;
-                finishedTaskCount++;
+                var firstProgress = new ConsoleProgressBar(title: "First", length: 100);
+                flow.Add(firstProgress);
 
-                Task.Delay(10).Wait();
+                var secondProgress = new ConsoleProgressBar(title: "Second", length: 100);
+                flow.Add(secondProgress);
+
+                flow.Display();
+
+                for (int i = 0; i <= 50; i++)
+                {
+                    firstProgress.Value = i / 100f;
+                    Task.Delay(100).Wait();
+                }
+
+                for (int i = 0; i <= 100; i++)
+                {
+                    secondProgress.Value = i / 100f;
+                    Task.Delay(100).Wait();
+                }
+
+                for (int i = 50; i <= 100; i++)
+                {
+                    firstProgress.Value = i / 100f;
+                    Task.Delay(100).Wait();
+                }
+
+                Console.ReadKey();
             }
         }
     }
