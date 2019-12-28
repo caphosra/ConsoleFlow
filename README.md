@@ -11,6 +11,10 @@ You can test them by running `dotnet run` on `/src/Example`.
 <img src="img/ProgressBarExample.gif" width=700px></img>
 
 ``` C#
+// using System;
+// using System.Threading.Tasks;
+// using TerminalFlow;
+
 //
 // Initalize ConsoleFlow.
 //
