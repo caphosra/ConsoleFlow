@@ -1,3 +1,5 @@
+#pragma warning disable CS0067
+
 using System;
 
 using TerminalFlow;
@@ -6,10 +8,14 @@ namespace TerminalFlow.Core
 {
     public abstract class ConsoleUI
     {
-        public (int x, int y) StartPosition { get; internal set; } = (-1, -1);
+        public abstract ConsoleSize Size { get; }
 
-        public OnUIChangedEventHandler OnUIChanged { get; set; }
+        public virtual event OnResizeEventHandler OnResize;
+        public virtual event OnRepaintEventHandler OnRepaint;
 
         public abstract void Display();
     }
+
+    public delegate void OnResizeEventHandler(ConsoleUI ui);
+    public delegate void OnRepaintEventHandler(ConsoleUI ui);
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 using TerminalFlow.Core;
 
 namespace TerminalFlow
 {
-    public class ProgressBar : ConsoleUI
+    public class ConsoleProgressBar : ConsoleUI
     {
         public float Value
         {
@@ -14,15 +15,38 @@ namespace TerminalFlow
             set
             {
                 m_Value = value;
-                OnUIChanged?.Invoke(this);
+                OnRepaint?.Invoke(this);
             }
         }
         private float m_Value;
 
+        public string Title
+        {
+            get => m_Title;
+            set
+            {
+                m_Title = value;
+                OnResize?.Invoke(this);
+            }
+        }
         private string m_Title;
+
+        public int Length => m_Length;
         private int m_Length;
 
-        public ProgressBar(string title = "", int length = 10)
+        public override ConsoleSize Size
+        {
+            get
+            {
+                var titleWidth = Encoding.Unicode.GetByteCount(m_Title);
+                return new ConsoleSize(titleWidth + m_Length + 2, 1);
+            }
+        }
+
+        public override event OnRepaintEventHandler OnRepaint;
+        public override event OnResizeEventHandler OnResize;
+
+        public ConsoleProgressBar(string title = "", int length = 10)
         {
             m_Title = title;
             m_Length = length;
@@ -50,7 +74,7 @@ namespace TerminalFlow
                 }
             }
 
-            Console.WriteLine($"|{Math.Floor(m_Value * 100f)}%");
+            Console.Write($"|{Math.Floor(m_Value * 100f)}%");
         }
     }
 }

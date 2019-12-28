@@ -6,11 +6,16 @@ using TerminalFlow.Native;
 
 namespace TerminalFlow
 {
-    public class ConsoleFlow : ConsoleUI, IDisposable    {
+    public class ConsoleFlow : IDisposable
+    {
         internal protected static bool isInitialized = false;
 
         private List<ConsoleUI> m_UIs =
             new List<ConsoleUI>();
+        private Dictionary<ConsoleUI, ConsoleVec2> m_UIPos =
+            new Dictionary<ConsoleUI, ConsoleVec2>();
+
+        private ConsoleVec2 m_StartPosition;
 
         public ConsoleFlow()
         {
@@ -27,69 +32,76 @@ namespace TerminalFlow
         public void Add(ConsoleUI ui)
         {
             m_UIs.Add(ui);
-            ui.OnUIChanged = OnReceiveUIChanged;
+            ui.OnRepaint += OnReceiveRepaintEvent;
+            ui.OnResize += OnReceiveResizeEvent;
         }
 
-        public override void Display()
+        public void Display()
         {
             Console.CursorVisible = false;
 
+            var currentPos = new ConsoleVec2(Console.CursorLeft, Console.CursorTop);
+            m_StartPosition = currentPos;
+
             foreach(var ui in m_UIs)
             {
-                DisplayUI(ui);
+                currentPos.Move();
+                m_UIPos[ui] = currentPos;
+                ui.Display();
+                currentPos.Y += ui.Size.Height;
             }
         }
 
-        private void DisplayUI(ConsoleUI ui)
+        private void EraseAfter(ConsoleVec2 vec2)
         {
-            ui.StartPosition = (Console.CursorLeft, Console.CursorTop);
-            ui.Display();
-        }
-
-        private void EraseAfter(ConsoleUI ui)
-        {
-            var pos = ui.StartPosition;
-            Console.SetCursorPosition(pos.x, pos.y);
+            vec2.Move();
 
             ANSIEscapeCodeProcessor.ClearAfterCursor();
         }
 
-        private void OnReceiveUIChanged(ConsoleUI sender)
+        private void OnReceiveResizeEvent(ConsoleUI sender)
         {
-            bool willBeChanged = false;
+            var change = false;
+            var currentPos = new ConsoleVec2(0, 0);
+
             foreach(var ui in m_UIs)
             {
                 if(ui == sender)
                 {
-                    willBeChanged = true;
-
-                    EraseAfter(ui);
+                    change = true;
+                    currentPos = m_UIPos[ui];
                 }
 
-                if(willBeChanged)
+                if (change)
                 {
-                    DisplayUI(ui);
+                    currentPos.Move();
+                    m_UIPos[ui] = currentPos;
+                    ui.Display();
+                    currentPos.Y += ui.Size.Height;
                 }
             }
+        }
 
-            if(!willBeChanged)
+        private void OnReceiveRepaintEvent(ConsoleUI sender)
+        {
+            if (m_UIPos.ContainsKey(sender))
             {
-                throw new ArgumentException("There is no content which is the same to 'sender'.");
+                var pos = m_UIPos[sender];
+                pos.Move();
+                sender.Display();
+            }
+            else
+            {
+                throw new ArgumentException("There is no sender.");
             }
         }
 
         public void Dispose()
         {
-            if(m_UIs.Count > 0)
-            {
-                EraseAfter(m_UIs[0]);
-            }
-
-            m_UIs = null;
+            m_StartPosition.Move();
+            ANSIEscapeCodeProcessor.ClearAfterCursor();
 
             Console.CursorVisible = true;
         }
     }
-
-    public delegate void OnUIChangedEventHandler(ConsoleUI sender);
 }
