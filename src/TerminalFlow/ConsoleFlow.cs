@@ -17,15 +17,11 @@ namespace TerminalFlow
 
         private ConsoleVec2 m_StartPosition;
 
-        public ConsoleFlow()
+        public ConsoleFlow(params ConsoleUI[] uis)
         {
-            if(!isInitialized)
+            foreach(var ui in uis)
             {
-                if(Environment.OSVersion.Platform == PlatformID.Win32NT)
-                {
-                    KernelWrapper.EnableVirtualTerminalProcessing();
-                }
-                isInitialized = true;
+                Add(ui);
             }
         }
 
@@ -39,6 +35,15 @@ namespace TerminalFlow
         public void Display()
         {
             Console.CursorVisible = false;
+
+            if(!isInitialized)
+            {
+                if(Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    KernelWrapper.EnableVirtualTerminalProcessing();
+                }
+                isInitialized = true;
+            }
 
             var currentPos = new ConsoleVec2(Console.CursorLeft, Console.CursorTop);
             m_StartPosition = currentPos;
@@ -56,7 +61,7 @@ namespace TerminalFlow
         {
             vec2.Move();
 
-            ANSIEscapeCodeProcessor.ClearAfterCursor();
+            WordProcessor.ClearAfterCursor();
         }
 
         private void OnReceiveResizeEvent(ConsoleUI sender)
@@ -99,7 +104,7 @@ namespace TerminalFlow
         public void Dispose()
         {
             m_StartPosition.Move();
-            ANSIEscapeCodeProcessor.ClearAfterCursor();
+            WordProcessor.ClearAfterCursor();
 
             Console.CursorVisible = true;
         }
