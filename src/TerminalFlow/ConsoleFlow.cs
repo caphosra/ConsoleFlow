@@ -45,7 +45,7 @@ namespace TerminalFlow
                 isInitialized = true;
             }
 
-            var currentPos = new ConsoleVec2(Console.CursorLeft, Console.CursorTop);
+            var currentPos = ConsoleVec2.Current;
             m_StartPosition = currentPos;
 
             foreach(var ui in m_UIs)
