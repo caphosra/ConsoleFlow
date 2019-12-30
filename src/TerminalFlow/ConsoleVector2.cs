@@ -17,5 +17,8 @@ namespace TerminalFlow
         {
             Console.SetCursorPosition(X, Y);
         }
+
+        public static ConsoleVec2 Current =>
+            new ConsoleVec2(Console.CursorLeft, Console.CursorTop);
     }
 }
