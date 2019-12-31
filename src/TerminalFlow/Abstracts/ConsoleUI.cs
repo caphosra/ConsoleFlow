@@ -10,10 +10,20 @@ namespace TerminalFlow.Core
     {
         public abstract ConsoleSize Size { get; }
 
-        public virtual event OnResizeEventHandler OnResize;
-        public virtual event OnRepaintEventHandler OnRepaint;
+        public event OnResizeEventHandler OnResize;
+        public event OnRepaintEventHandler OnRepaint;
 
         public abstract void Display();
+
+        protected void InvokeResize()
+        {
+            OnResize?.Invoke(this);
+        }
+
+        protected void InvokeRepaint()
+        {
+            OnRepaint?.Invoke(this);
+        }
     }
 
     public delegate void OnResizeEventHandler(ConsoleUI ui);

@@ -15,7 +15,7 @@ namespace TerminalFlow
             set
             {
                 m_Value = value;
-                OnRepaint?.Invoke(this);
+                ContinueText();
             }
         }
         private float m_Value;
@@ -26,7 +26,7 @@ namespace TerminalFlow
             set
             {
                 m_Title = value;
-                OnResize?.Invoke(this);
+                ContinueText();
             }
         }
         private string m_Title;
@@ -34,47 +34,80 @@ namespace TerminalFlow
         public int Length => m_Length;
         private int m_Length;
 
-        public override ConsoleSize Size
-        {
-            get
-            {
-                var titleWidth = Encoding.Unicode.GetByteCount(m_Title);
-                return new ConsoleSize(titleWidth + m_Length + 2, 1);
-            }
-        }
+        private string m_ProcessedText = "";
 
-        public override event OnRepaintEventHandler OnRepaint;
-        public override event OnResizeEventHandler OnResize;
+        private ConsoleSize m_Size = new ConsoleSize(0, 0);
+        public override ConsoleSize Size => m_Size;
 
         public ConsoleProgressBar(string title = "", int length = 10)
         {
             m_Title = title;
             m_Length = length;
+
+            m_ProcessedText = ProcessText();
+            UpdateSize();
         }
 
-        public override void Display()
+        protected void UpdateSize()
         {
+            m_Size = new ConsoleSize(WordProcessor.GetLength(m_ProcessedText), 1);
+        }
+
+        protected string ProcessText()
+        {
+            StringBuilder sb = new StringBuilder();
+
             if(m_Value < 0f || 1f < m_Value)
             {
                 throw new ArgumentOutOfRangeException("The value of progress bar should be on 0-1.");
             }
 
-            Console.Write(m_Title + "|");
+            sb.Append(m_Title);
+            sb.Append("|");
 
             var progress = (int)Math.Floor(m_Value * m_Length);
             foreach(var count in Enumerable.Range(0, m_Length))
             {
                 if(progress >= count && progress != 0)
                 {
-                    Console.Write("*");
+                    sb.Append("*");
                 }
                 else
                 {
-                    Console.Write("-");
+                    sb.Append("-");
                 }
             }
 
-            Console.Write($"|{Math.Floor(m_Value * 100f)}%");
+            sb.Append("|");
+            sb.Append(Math.Floor(m_Value * 100f));
+            sb.Append("%");
+
+            return sb.ToString();
+        }
+
+        protected void ContinueText()
+        {
+            var newText = ProcessText();
+            UpdateSize();
+
+            if (newText != m_ProcessedText)
+            {
+                if (WordProcessor.GetLength(newText) != WordProcessor.GetLength(m_ProcessedText))
+                {
+                    m_ProcessedText = newText;
+                    InvokeResize();
+                }
+                else
+                {
+                    m_ProcessedText = newText;
+                    InvokeRepaint();
+                }
+            }
+        }
+
+        public override void Display()
+        {
+            Console.Write(m_ProcessedText);
         }
     }
 }
