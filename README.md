@@ -1,16 +1,15 @@
-<h1 align="center">Terminal Flow - UI for C# Console</h1>
+# Terminal Flow - UI for C# Console
 
 [![Badge](https://github.com/capra314cabra/terminal-flow/workflows/CI/badge.svg)](https://github.com/capra314cabra/terminal-flow/actions)
+[![Nuget](https://img.shields.io/nuget/v/TerminalFlow)](https://www.nuget.org/packages/TerminalFlow/)
 
 This is a C#(dotnet) library for making your design of CUI tool better.
 
-<h2>Demo</h2>
+## Demo
 
-You can test them by running `dotnet run` on `/src/Example`.
+### Progress bar example
 
-<h3>Progress bar example</h3>
-
-<img src="img/ProgressBarExample.gif" width=700px></img>
+![ProgressDemo](./img/ProgressBarExample.gif)
 
 ``` C#
 // using System;
@@ -18,18 +17,20 @@ You can test them by running `dotnet run` on `/src/Example`.
 // using TerminalFlow;
 
 //
-// Initalize ConsoleFlow.
-//
-var flow = new ConsoleFlow();
-
-//
-// Create ProgressBar components and attach to ConsoleFlow.
+// Create ProgressBar components.
 //
 var firstProgress = new ConsoleProgressBar(title: "First", length: 100);
-flow.Add(firstProgress);
 
 var secondProgress = new ConsoleProgressBar(title: "Second", length: 100);
-flow.Add(secondProgress);
+
+//
+// Attach them to ConsoleFlow.
+//
+var flow = new ConsoleFlow
+(
+    firstProgress,
+    secondProgress
+);
 
 //
 // Print contents to the terminal.
@@ -40,21 +41,8 @@ flow.Display();
 // Change the value of ProgressBar.
 // And you will see the components are changed corresponding to the value.
 //
-for (int i = 0; i <= 50; i++)
-{
-    firstProgress.Value = i / 100f;
-    Task.Delay(100).Wait();
-}
-for (int i = 0; i <= 100; i++)
-{
-    secondProgress.Value = i / 100f;
-    Task.Delay(100).Wait();
-}
-for (int i = 50; i <= 100; i++)
-{
-    firstProgress.Value = i / 100f;
-    Task.Delay(100).Wait();
-}
+// Example: firstProgress.Value = 0.5f; // 50%
+//
 
 //
 // Wait user input for preventing from finishing.
