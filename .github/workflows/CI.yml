@@ -17,12 +17,8 @@ jobs:
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ${{ DOTNET_VERSION }}
-      env:
-        DOTNET_VERSION: 3.1.100
+        dotnet-version: 3.1.100
     - name: Build example project
       run: |
         dotnet build -c Release
-      working-directory: ${{ EXAMPLE_DIRECTORY }}
-      env:
-        EXAMPLE_DIRECTORY: ./src/Example
+      working-directory: ./src/Example
