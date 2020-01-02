@@ -1,5 +1,7 @@
 <h1 align="center">Terminal Flow - UI for C# Console</h1>
 
+[![Badge](https://github.com/capra314cabra/terminal-flow/workflows/CI/badge.svg)](https://github.com/capra314cabra/terminal-flow/actions)
+
 This is a C#(dotnet) library for making your design of CUI tool better.
 
 <h2>Demo</h2>
