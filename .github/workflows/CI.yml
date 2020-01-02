@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: 
+    branches:
     - master
   pull_request:
     branches:
@@ -11,9 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      EXAMPLE_DIRECTORY: ./src/Example
-      DOTNET_VERSION: 3.1.100
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -21,7 +18,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ DOTNET_VERSION }}
+      env:
+        DOTNET_VERSION: 3.1.100
     - name: Build example project
       run: |
         dotnet build -c Release
       working-directory: ${{ EXAMPLE_DIRECTORY }}
+      env:
+        EXAMPLE_DIRECTORY: ./src/Example
