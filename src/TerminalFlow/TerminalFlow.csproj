@@ -5,8 +5,35 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>TerminalFlow</PackageId>
+    <Title>TerminalFlow</Title>
+    <PackageDescription>This is a C#(dotnet) library for making your design of CUI tool better.</PackageDescription>
+    <Authors>capra314cabra</Authors>
+    <Company>capra314cabra</Company>
+    <Copyright>(c) 2019 Akihisa Yagi</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/capra314cabra/terminal-flow</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/capra314cabra/terminal-flow.git</RepositoryUrl>
+    <PackageIcon>icon-512.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>terminalflow;console;terminal;cui;design</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="PInvoke.Kernel32" Version="0.6.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../img/icon-512.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
