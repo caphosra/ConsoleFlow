@@ -3,13 +3,15 @@
 [![Badge](https://github.com/capra314cabra/terminal-flow/workflows/CI/badge.svg)](https://github.com/capra314cabra/terminal-flow/actions)
 [![Nuget](https://img.shields.io/nuget/v/TerminalFlow)](https://www.nuget.org/packages/TerminalFlow/)
 
+![Icon](https://github.com/capra314cabra/terminal-flow/blob/master/img/icon-256.png)
+
 This is a C#(dotnet) library for making your design of CUI tool better.
 
 ## Demo
 
 ### Progress bar example
 
-![ProgressDemo](./img/ProgressBarExample.gif)
+![ProgressDemo](https://github.com/capra314cabra/terminal-flow/blob/master/img/ProgressBarExample.gif)
 
 ``` C#
 // using System;
