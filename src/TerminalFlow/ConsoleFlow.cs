@@ -75,6 +75,7 @@ namespace TerminalFlow
                 {
                     change = true;
                     currentPos = m_UIPos[ui];
+                    EraseAfter(currentPos);
                 }
 
                 if (change)

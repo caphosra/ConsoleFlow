@@ -2,7 +2,7 @@ using System;
 
 namespace TerminalFlow
 {
-    public class ConsoleVec2
+    public struct ConsoleVec2
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -19,6 +19,11 @@ namespace TerminalFlow
         public void Move()
         {
             Console.SetCursorPosition(X, Y);
+        }
+
+        public override string ToString()
+        {
+            return $"X:{X},Y:{Y}";
         }
 
         public static ConsoleVec2 Current =>
