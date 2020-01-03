@@ -1,0 +1,51 @@
+name: CD
+
+#
+# Release them when the tag formated like 'v*.*.*' is pushed.
+#
+on:
+  push:
+    tags:
+    - v*.*.*
+
+jobs:
+  #
+  # Release to GitHub
+  #
+  release-GitHub:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - name: Build
+      run: |
+        dotnet publish -c Release -o TerminalFlow
+      working-directory: ./src/TerminalFlow
+    - name: Release
+      uses: fnkr/github-action-ghr@v1
+      env:
+        GHR_COMPRESS: zip
+        GHR_PATH: ./src/TerminalFlow/TerminalFlow
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  #
+  # Release to NuGet
+  #
+  release-NuGet:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - name: Publish package
+      uses: rohith/publish-nuget@v1
+      with:
+        project_dir: ./src/TerminalFlow
+        nuget_key: ${{ secrets.NUGET_PUBLISH_KEY }}
