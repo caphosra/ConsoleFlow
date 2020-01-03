@@ -3,6 +3,12 @@ using TerminalFlow.Core;
 
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    /// The text on Console.
+    /// Which works like a Label class on WindowsForms.
+    ///
+    /// </summary>
     public class ConsoleText : ConsoleUI
     {
         public override ConsoleSize Size => m_Size;

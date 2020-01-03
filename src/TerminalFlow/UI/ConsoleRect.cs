@@ -5,11 +5,21 @@ using TerminalFlow.Core;
 
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    /// The colored rectangle on Console.
+    ///
+    /// </summary>
     public class ConsoleRect : ConsoleUI
     {
         public override ConsoleSize Size => m_Size;
         private ConsoleSize m_Size;
 
+        /// <summary>
+        ///
+        /// The color which is painted.
+        ///
+        /// </summary>
         public ConsoleColor Color
         {
             get => m_Color;
@@ -27,6 +37,11 @@ namespace TerminalFlow
             m_Color = color;
         }
 
+        /// <summary>
+        ///
+        /// Chnage the size of the rectangle.
+        ///
+        /// </summary>
         public void ChangeSize(ConsoleSize size)
         {
             m_Size = size;
