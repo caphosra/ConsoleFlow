@@ -6,15 +6,49 @@ using TerminalFlow.Native;
 
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    /// This class supports user to show ConsoleUIs with logic.
+    ///
+    /// </summary>
     public class ConsoleFlow : IDisposable
     {
+        /// <summary>
+        ///
+        /// On Windows, enabling Virtual Terminal Processing is required.
+        /// This boolean has whether it did or not.
+        ///
+        /// </summary>
         internal protected static bool isInitialized = false;
 
+        /// <summary>
+        ///
+        /// After dispose this, does the user want to clean all?
+        ///
+        /// </summary>
+        public bool CleanAll { get; set; }
+
+        /// <summary>
+        ///
+        /// Childen UIs.
+        ///
+        /// </summary>
         private List<ConsoleUI> m_UIs =
             new List<ConsoleUI>();
+
+        /// <summary>
+        ///
+        /// The positions of UIs which is included in m_UIs.
+        ///
+        /// </summary>
         private Dictionary<ConsoleUI, ConsoleVec2> m_UIPos =
             new Dictionary<ConsoleUI, ConsoleVec2>();
 
+        /// <summary>
+        ///
+        /// The cursor position when displayed.
+        ///
+        /// </summary>
         private ConsoleVec2 m_StartPosition;
 
         public ConsoleFlow(params ConsoleUI[] uis)
@@ -25,6 +59,11 @@ namespace TerminalFlow
             }
         }
 
+        /// <summary>
+        ///
+        /// Attach UI as child.
+        ///
+        /// </summary>
         public void Add(ConsoleUI ui)
         {
             m_UIs.Add(ui);
@@ -32,6 +71,11 @@ namespace TerminalFlow
             ui.OnResize += OnReceiveResizeEvent;
         }
 
+        /// <summary>
+        ///
+        /// Display all of the contents which are as children of this.
+        ///
+        /// </summary>
         public void Display()
         {
             Console.CursorVisible = false;
@@ -57,6 +101,11 @@ namespace TerminalFlow
             }
         }
 
+        /// <summary>
+        ///
+        /// Erase all after the cursor position.
+        ///
+        /// </summary>
         private void EraseAfter(ConsoleVec2 vec2)
         {
             vec2.Move();
@@ -64,6 +113,11 @@ namespace TerminalFlow
             WordProcessor.ClearAfterCursor();
         }
 
+        /// <summary>
+        ///
+        /// This function invoked when `sender` resizes.
+        ///
+        /// </summary>
         private void OnReceiveResizeEvent(ConsoleUI sender)
         {
             var change = false;
@@ -88,6 +142,11 @@ namespace TerminalFlow
             }
         }
 
+        /// <summary>
+        ///
+        /// This function invoked when `sender` repaints.
+        ///
+        /// </summary>
         private void OnReceiveRepaintEvent(ConsoleUI sender)
         {
             if (m_UIPos.ContainsKey(sender))
@@ -102,12 +161,20 @@ namespace TerminalFlow
             }
         }
 
+        /// <summary>
+        ///
+        /// Clean this item.
+        ///
+        /// </summary>
         public void Dispose()
         {
-            m_StartPosition.Move();
-            WordProcessor.ClearAfterCursor();
+            if(CleanAll)
+            {
+                m_StartPosition.Move();
+                WordProcessor.ClearAfterCursor();
 
-            Console.CursorVisible = true;
+                Console.CursorVisible = true;
+            }
         }
     }
 }
