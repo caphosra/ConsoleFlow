@@ -1,50 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using TerminalFlow;
 
 namespace TerminalFlow.Example
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-
-            using(var flow = new ConsoleFlow())
+            var examplesClass = new Examples();
+            var methods = examplesClass.GetType().GetMethods();
+            methods = methods.Where(method => new Regex(".*Example").IsMatch(method.Name)).ToArray();
+            int counter = 0;
+            foreach (var method in methods)
             {
-                var firstProgress = new ConsoleProgressBar(title: "First", length: 100);
-                flow.Add(firstProgress);
-
-                var secondProgress = new ConsoleProgressBar(title: "Second", length: 100);
-                flow.Add(secondProgress);
-
-                flow.Display();
-
-                for (int i = 0; i <= 50; i++)
-                {
-                    firstProgress.Value = i / 100f;
-                    Task.Delay(100).Wait();
-                }
-
-                for (int i = 0; i <= 100; i++)
-                {
-                    secondProgress.Value = i / 100f;
-                    Task.Delay(100).Wait();
-                }
-
-                for (int i = 50; i <= 100; i++)
-                {
-                    firstProgress.Value = i / 100f;
-                    Task.Delay(100).Wait();
-                }
-
-                Console.ReadKey();
+                Console.WriteLine($"{counter} - {method.Name}");
+                counter++;
             }
+            try
+            {
+                var id = uint.Parse(Console.ReadLine());
+                var method = methods[id];
+
+                Console.Clear();
+                Console.SetCursorPosition(0, 0);
+
+                method.Invoke(examplesClass, null);
+            }
+            finally { }
         }
     }
 }
