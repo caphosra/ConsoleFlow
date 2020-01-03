@@ -4,8 +4,18 @@ using PInvoke;
 
 namespace TerminalFlow.Native
 {
+    /// <summary>
+    ///
+    /// Kernel wrapper, which does not implement everything.
+    ///
+    /// </summary>
     internal static class KernelWrapper
     {
+        /// <summary>
+        ///
+        /// Enable the virtual terminal processing.
+        ///
+        /// </summary>
         public static void EnableVirtualTerminalProcessing()
         {
             var hStdoutHandle = Kernel32.GetStdHandle(Kernel32.StdHandle.STD_OUTPUT_HANDLE);

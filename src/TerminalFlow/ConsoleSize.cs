@@ -1,5 +1,10 @@
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    /// Represent the size of rectangle on Console.
+    ///
+    /// </summary>
     public struct ConsoleSize
     {
         public int Width { get; set; }
@@ -9,6 +14,11 @@ namespace TerminalFlow
         {
             Width = width;
             Height = height;
+        }
+
+        public override string ToString()
+        {
+            return $"Width:{Width},Height:{Height}";
         }
     }
 }
