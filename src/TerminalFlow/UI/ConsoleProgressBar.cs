@@ -7,8 +7,18 @@ using TerminalFlow.Core;
 
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    ///  A simple progress bar which works on Console.
+    ///
+    /// </summary>
     public class ConsoleProgressBar : ConsoleUI
     {
+        /// <summary>
+        ///
+        /// The value of the progress bar.
+        ///
+        /// </summary>
         public float Value
         {
             get => m_Value;
@@ -20,6 +30,11 @@ namespace TerminalFlow
         }
         private float m_Value;
 
+        /// <summary>
+        ///
+        /// The title of the progress bar.
+        ///
+        /// </summary>
         public string Title
         {
             get => m_Title;
@@ -31,13 +46,23 @@ namespace TerminalFlow
         }
         private string m_Title;
 
+        /// <summary>
+        ///
+        /// The length of the value-shown part of the progress bar.
+        ///
+        /// </summary>
         public int Length => m_Length;
         private int m_Length;
 
+        /// <summary>
+        ///
+        /// Output text.
+        ///
+        /// </summary>
         private string m_ProcessedText = "";
 
-        private ConsoleSize m_Size = new ConsoleSize(0, 0);
         public override ConsoleSize Size => m_Size;
+        private ConsoleSize m_Size = new ConsoleSize(0, 0);
 
         public ConsoleProgressBar(string title = "", int length = 10)
         {
@@ -48,11 +73,22 @@ namespace TerminalFlow
             UpdateSize();
         }
 
+        /// <summary>
+        ///
+        /// Recalcutate the size.
+        ///
+        /// </summary>
         protected void UpdateSize()
         {
             m_Size = new ConsoleSize(WordProcessor.GetLength(m_ProcessedText), 1);
         }
 
+        /// <summary>
+        ///
+        /// Regenerate the text.
+        ///
+        /// </summary>
+        /// <returns></returns>
         protected string ProcessText()
         {
             StringBuilder sb = new StringBuilder();
@@ -85,6 +121,11 @@ namespace TerminalFlow
             return sb.ToString();
         }
 
+        /// <summary>
+        ///
+        /// Generate the text and change the appearance.
+        ///
+        /// </summary>
         protected void ContinueText()
         {
             var newText = ProcessText();

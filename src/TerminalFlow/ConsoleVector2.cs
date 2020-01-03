@@ -2,6 +2,11 @@ using System;
 
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    /// Represent the point of the location of Console.
+    ///
+    /// </summary>
     public struct ConsoleVec2
     {
         public int X { get; set; }
@@ -16,6 +21,11 @@ namespace TerminalFlow
             Y = y;
         }
 
+        /// <summary>
+        ///
+        /// Move the cursor to the point.
+        ///
+        /// </summary>
         public void Move()
         {
             Console.SetCursorPosition(X, Y);
@@ -29,7 +39,7 @@ namespace TerminalFlow
         public static ConsoleVec2 Current =>
             new ConsoleVec2(Console.CursorLeft, Console.CursorTop);
 
-        public static ConsoleVec2 operator+(ConsoleVec2 a, ConsoleVec2 b)
+        public static ConsoleVec2 operator +(ConsoleVec2 a, ConsoleVec2 b)
         {
             return new ConsoleVec2(a.X + b.X, a.Y + b.Y);
         }

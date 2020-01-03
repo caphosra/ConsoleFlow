@@ -5,6 +5,11 @@ using TerminalFlow.Core;
 
 namespace TerminalFlow
 {
+    /// <summary>
+    ///
+    /// Layout children UIs horizontally.
+    ///
+    /// </summary>
     public class HorizontalBox : ConsoleUI
     {
         private List<ConsoleUI> m_UIs =
@@ -21,6 +26,11 @@ namespace TerminalFlow
             }
         }
 
+        /// <summary>
+        ///
+        /// Attach UI as child.
+        ///
+        /// </summary>
         public void Add(ConsoleUI ui)
         {
             m_UIs.Add(ui);
