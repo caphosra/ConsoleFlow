@@ -1,6 +1,6 @@
 using System;
 
-namespace TerminalFlow
+namespace ConsoleFlow
 {
     /// <summary>
     ///

@@ -1,7 +1,7 @@
 using System;
-using TerminalFlow.Core;
+using ConsoleFlow.Core;
 
-namespace TerminalFlow
+namespace ConsoleFlow
 {
     /// <summary>
     ///

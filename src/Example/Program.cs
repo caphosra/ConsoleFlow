@@ -8,9 +8,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-using TerminalFlow;
+using ConsoleFlow;
 
-namespace TerminalFlow.Example
+namespace ConsoleFlow.Example
 {
     class Program
     {

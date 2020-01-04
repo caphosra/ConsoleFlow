@@ -3,9 +3,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using TerminalFlow.Core;
+using ConsoleFlow.Core;
 
-namespace TerminalFlow
+namespace ConsoleFlow
 {
     /// <summary>
     ///

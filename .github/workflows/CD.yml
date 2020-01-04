@@ -23,13 +23,13 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build
       run: |
-        dotnet publish -c Release -o TerminalFlow
-      working-directory: ./src/TerminalFlow
+        dotnet publish -c Release -o ConsoleFlow
+      working-directory: ./src/ConsoleFlow
     - name: Release
       uses: fnkr/github-action-ghr@v1
       env:
         GHR_COMPRESS: zip
-        GHR_PATH: ./src/TerminalFlow/TerminalFlow
+        GHR_PATH: ./src/ConsoleFlow/ConsoleFlow
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   #
@@ -47,5 +47,5 @@ jobs:
     - name: Publish package
       uses: rohith/publish-nuget@v1
       with:
-        project_dir: ./src/TerminalFlow
+        project_dir: ./src/ConsoleFlow
         nuget_key: ${{ secrets.NUGET_PUBLISH_KEY }}
