@@ -73,6 +73,17 @@ namespace TerminalFlow
             UpdateSize();
         }
 
+        public ConsoleProgressBar(out ConsoleProgressBar bar, string title = "", int length = 10)
+        {
+            m_Title = title;
+            m_Length = length;
+
+            m_ProcessedText = ProcessText();
+            UpdateSize();
+
+            bar = this;
+        }
+
         /// <summary>
         ///
         /// Recalcutate the size.
