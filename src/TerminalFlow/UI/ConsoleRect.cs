@@ -31,10 +31,32 @@ namespace TerminalFlow
         }
         private ConsoleColor m_Color;
 
+        public ConsoleRect(int width, int height, ConsoleColor color)
+        {
+            m_Size = new ConsoleSize(width, height);
+            m_Color = color;
+        }
+
         public ConsoleRect(ConsoleSize size, ConsoleColor color)
         {
             m_Size = size;
             m_Color = color;
+        }
+
+        public ConsoleRect(out ConsoleRect rect, int width, int height, ConsoleColor color)
+        {
+            m_Size = new ConsoleSize(width, height);
+            m_Color = color;
+
+            rect = this;
+        }
+
+        public ConsoleRect(out ConsoleRect rect, ConsoleSize size, ConsoleColor color)
+        {
+            m_Size = size;
+            m_Color = color;
+
+            rect = this;
         }
 
         /// <summary>
