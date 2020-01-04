@@ -2,7 +2,7 @@ using System;
 
 using PInvoke;
 
-namespace TerminalFlow.Native
+namespace ConsoleFlow.Native
 {
     /// <summary>
     ///

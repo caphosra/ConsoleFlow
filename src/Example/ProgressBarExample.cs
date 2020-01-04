@@ -1,8 +1,8 @@
 using System;
 
-using TerminalFlow;
+using ConsoleFlow;
 
-namespace TerminalFlow.Example
+namespace ConsoleFlow.Example
 {
     partial class Examples
     {

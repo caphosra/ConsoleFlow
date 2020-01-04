@@ -2,9 +2,9 @@
 
 using System;
 
-using TerminalFlow;
+using ConsoleFlow;
 
-namespace TerminalFlow.Core
+namespace ConsoleFlow.Core
 {
     /// <summary>
     ///

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../TerminalFlow/TerminalFlow.csproj" />
+    <ProjectReference Include="../ConsoleFlow/ConsoleFlow.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,18 +6,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>TerminalFlow</PackageId>
-    <Title>TerminalFlow</Title>
+    <PackageId>ConsoleFlow</PackageId>
+    <Title>ConsoleFlow</Title>
     <PackageDescription>This is a C#(dotnet) library for making your design of CUI tool better.</PackageDescription>
     <Authors>capra314cabra</Authors>
     <Company>capra314cabra</Company>
     <Copyright>(c) 2019 Akihisa Yagi</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/capra314cabra/terminal-flow</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/capra314cabra/terminal-flow.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/capra314cabra/ConsoleFlow</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/capra314cabra/ConsoleFlow.git</RepositoryUrl>
     <PackageIcon>icon-512.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>terminalflow;console;terminal;cui;design</PackageTags>
+    <PackageTags>consoleflow;console;cui;design;terminal</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,4 +1,4 @@
-namespace TerminalFlow
+namespace ConsoleFlow
 {
     /// <summary>
     ///

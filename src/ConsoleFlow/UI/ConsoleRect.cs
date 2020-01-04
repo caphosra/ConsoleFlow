@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 
-using TerminalFlow.Core;
+using ConsoleFlow.Core;
 
-namespace TerminalFlow
+namespace ConsoleFlow
 {
     /// <summary>
     ///

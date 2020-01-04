@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-using TerminalFlow.Core;
-using TerminalFlow.Native;
+using ConsoleFlow.Core;
+using ConsoleFlow.Native;
 
-namespace TerminalFlow
+namespace ConsoleFlow
 {
     /// <summary>
     ///

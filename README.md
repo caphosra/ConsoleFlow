@@ -1,9 +1,9 @@
-# Terminal Flow - UI for C# Console
+# Console Flow - UI for C# Console
 
-[![Badge](https://github.com/capra314cabra/terminal-flow/workflows/CI/badge.svg)](https://github.com/capra314cabra/terminal-flow/actions)
-[![Nuget](https://img.shields.io/nuget/v/TerminalFlow)](https://www.nuget.org/packages/TerminalFlow/)
+[![Badge](https://github.com/capra314cabra/ConsoleFlow/workflows/CI/badge.svg)](https://github.com/capra314cabra/ConsoleFlow/actions)
+[![Nuget](https://img.shields.io/nuget/v/ConsoleFlow)](https://www.nuget.org/packages/ConsoleFlow/)
 
-![Icon](https://github.com/capra314cabra/terminal-flow/blob/master/img/icon-256.png)
+![Icon](https://github.com/capra314cabra/ConsoleFlow/blob/master/img/icon-256.png)
 
 This is a C#(dotnet) library for making your design of CUI tool better.
 
@@ -11,12 +11,12 @@ This is a C#(dotnet) library for making your design of CUI tool better.
 
 ### Progress bar example
 
-![ProgressDemo](https://github.com/capra314cabra/terminal-flow/blob/master/img/ProgressBarExample.gif)
+![ProgressDemo](https://github.com/capra314cabra/ConsoleFlow/blob/master/img/ProgressBarExample.gif)
 
 ``` C#
 // using System;
 // using System.Threading.Tasks;
-// using TerminalFlow;
+// using ConsoleFlow;
 
 //
 // Create ProgressBar components.
