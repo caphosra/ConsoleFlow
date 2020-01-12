@@ -6,7 +6,7 @@ namespace ConsoleFlow.Example
 {
     partial class Examples
     {
-        public void ProgressBarExample()
+        public void SimpleProgressExample()
         {
             var firstProgress = new SimpleProgress(title: "First", length: 100);
             var secondProgress = new SimpleProgress(title: "Second", length: 100);
