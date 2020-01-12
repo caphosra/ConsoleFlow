@@ -18,10 +18,12 @@
     <PackageIcon>icon-512.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>consoleflow;console;cui;design;terminal</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.1</VersionPrefix>
+    <VersionPrefix>1.2.1</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
   </PropertyGroup>
 
