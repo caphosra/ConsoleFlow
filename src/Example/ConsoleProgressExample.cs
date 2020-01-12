@@ -8,16 +8,13 @@ namespace ConsoleFlow.Example
     {
         public void ConsoleProgressExample()
         {
-            var firstProgress = new ConsoleProgress(title: "First", length: 100);
-            var secondProgress = new ConsoleProgress(title: "Second", length: 100);
+            var firstProgress = new ConsoleProgress(title: "ConsoleProgress", length: 50);
+            var secondProgress = new SimpleProgress(title: "SimpleProgress", length: 50);
 
             var flow = new ConsoleFlow
             (
                 firstProgress,
-                new ConsoleText(""),
-                secondProgress,
-                new ConsoleText("Press [f] to increment First"),
-                new ConsoleText("Press [s] to increment Second")
+                secondProgress
             );
 
             flow.Display();
@@ -29,11 +26,11 @@ namespace ConsoleFlow.Example
                 {
                     break;
                 }
-                else if (key == ConsoleKey.F)
+                else if (key == ConsoleKey.UpArrow)
                 {
                     firstProgress.Value = Math.Clamp(firstProgress.Value + 0.1f, 0f, 1f);
                 }
-                else if (key == ConsoleKey.S)
+                else if (key == ConsoleKey.DownArrow)
                 {
                     secondProgress.Value = Math.Clamp(secondProgress.Value + 0.1f, 0f, 1f);
                 }

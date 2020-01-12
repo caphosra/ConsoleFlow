@@ -3,7 +3,7 @@
 [![Badge](https://github.com/capra314cabra/ConsoleFlow/workflows/CI/badge.svg)](https://github.com/capra314cabra/ConsoleFlow/actions)
 [![Nuget](https://img.shields.io/nuget/v/ConsoleFlow)](https://www.nuget.org/packages/ConsoleFlow/)
 
-![Icon](https://github.com/capra314cabra/ConsoleFlow/blob/master/img/icon-256.png)
+![Icon](https://media.githubusercontent.com/media/capra314cabra/ConsoleFlow/master/img/icon-256.png)
 
 This is a C#(dotnet) library for making your design of CUI tool better.
 
@@ -11,7 +11,7 @@ This is a C#(dotnet) library for making your design of CUI tool better.
 
 ### Progress bar example
 
-![ProgressDemo](https://github.com/capra314cabra/ConsoleFlow/blob/master/img/ProgressBarExample.gif)
+![ProgressDemo](https://media.githubusercontent.com/media/capra314cabra/ConsoleFlow/master/img/ConsoleProgressExample.gif)
 
 ``` C#
 // using System;
@@ -21,9 +21,9 @@ This is a C#(dotnet) library for making your design of CUI tool better.
 //
 // Create ProgressBar components.
 //
-var firstProgress = new SimpleProgress(title: "First", length: 100);
+var firstProgress = new ConsoleProgress(title: "First", length: 50);
 
-var secondProgress = new SimpleProgress(title: "Second", length: 100);
+var secondProgress = new SimpleProgress(title: "Second", length: 50);
 
 //
 // Attach them to ConsoleFlow.
@@ -43,11 +43,8 @@ flow.Display();
 // Change the value of ProgressBar.
 // And you will see the components are changed corresponding to the value.
 //
-// Example: firstProgress.Value = 0.5f; // 50%
+// Example:
 //
-
+// firstProgress.Value = 0.5f; // 50%
 //
-// Wait user input for preventing from finishing.
-//
-Console.ReadKey();
 ```
