@@ -44,8 +44,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
+    - name: Pack package
+      run: |
+        dotnet pack -c Release
+      working-directory: ./src/ConsoleFlow
     - name: Publish package
-      uses: rohith/publish-nuget@v1
-      with:
-        project_dir: ./src/ConsoleFlow
-        nuget_key: ${{ secrets.NUGET_PUBLISH_KEY }}
+      run: dotnet nuget push **/*.nupkg  -k $NUGET_KEY -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+      working-directory: ./src/ConsoleFlow

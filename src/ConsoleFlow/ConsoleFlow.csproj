@@ -18,6 +18,8 @@
     <PackageIcon>icon-512.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>consoleflow;console;cui;design;terminal</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup>
