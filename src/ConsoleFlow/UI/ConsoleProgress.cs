@@ -119,7 +119,7 @@ namespace ConsoleFlow
             relativePos += new ConsoleVec2(TITLE_SPACE_WIDTH, 0);
             (startPos + relativePos).Move();
 
-            Console.Write("|");
+            Console.Write("[");
 
             int progress = (int)Math.Floor(m_Length * m_Value);
             Console.BackgroundColor = OK_COLOR;
@@ -129,11 +129,19 @@ namespace ConsoleFlow
                 {
                     Console.ResetColor();
                 }
-                Console.Write(" ");
+
+                if(current < progress)
+                {
+                    Console.Write(" ");
+                }
+                else
+                {
+                    Console.Write("-");
+                }
             }
             Console.ResetColor();
 
-            Console.Write("|");
+            Console.Write("]");
 
             relativePos += new ConsoleVec2(1 + m_Length + 1, 0);
             (startPos + relativePos).Move();
