@@ -12,7 +12,7 @@ namespace ConsoleFlow
     ///  A simple progress bar which works on Console.
     ///
     /// </summary>
-    public class ConsoleProgressBar : ConsoleUI
+    public class SimpleProgress : ConsoleUI
     {
         /// <summary>
         ///
@@ -64,7 +64,7 @@ namespace ConsoleFlow
         public override ConsoleSize Size => m_Size;
         private ConsoleSize m_Size = new ConsoleSize(0, 0);
 
-        public ConsoleProgressBar(string title = "", int length = 10)
+        public SimpleProgress(string title = "", int length = 10)
         {
             m_Title = title;
             m_Length = length;
@@ -73,7 +73,7 @@ namespace ConsoleFlow
             UpdateSize();
         }
 
-        public ConsoleProgressBar(out ConsoleProgressBar bar, string title = "", int length = 10)
+        public SimpleProgress(out SimpleProgress bar, string title = "", int length = 10)
         {
             m_Title = title;
             m_Length = length;

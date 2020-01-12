@@ -8,8 +8,8 @@ namespace ConsoleFlow.Example
     {
         public void ProgressBarExample()
         {
-            var firstProgress = new ConsoleProgressBar(title: "First", length: 100);
-            var secondProgress = new ConsoleProgressBar(title: "Second", length: 100);
+            var firstProgress = new SimpleProgress(title: "First", length: 100);
+            var secondProgress = new SimpleProgress(title: "Second", length: 100);
 
             var flow = new ConsoleFlow
             (
