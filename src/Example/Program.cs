@@ -17,23 +17,34 @@ namespace ConsoleFlow.Example
         static void Main(string[] args)
         {
             var examplesClass = new Examples();
-            var methods = examplesClass.GetType().GetMethods();
-            methods = methods.Where(method => new Regex(".*Example").IsMatch(method.Name)).ToArray();
-            int counter = 0;
-            foreach (var method in methods)
+            var methodsWithIndex = examplesClass
+                .GetType()
+                .GetMethods()
+                .Where(method => new Regex(".*Example").IsMatch(method.Name))
+                .Select((method, index) => (method, index))
+                .ToArray();
+            foreach (var method in methodsWithIndex)
             {
-                Console.WriteLine($"{counter} - {method.Name}");
-                counter++;
+                Console.WriteLine($"{method.index} - {method.method.Name}");
             }
             try
             {
+                Console.Write("Which do you want to run ? > ");
+
                 var id = uint.Parse(Console.ReadLine());
-                var method = methods[id];
+                var method = methodsWithIndex[id].method;
 
                 Console.Clear();
                 Console.SetCursorPosition(0, 0);
 
                 method.Invoke(examplesClass, null);
+            }
+            catch(Exception e)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, 0);
+
+                Console.WriteLine(e.ToString());
             }
             finally { }
         }
