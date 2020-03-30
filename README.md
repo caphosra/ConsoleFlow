@@ -2,6 +2,7 @@
 
 [![Badge](https://github.com/capra314cabra/ConsoleFlow/workflows/CI/badge.svg)](https://github.com/capra314cabra/ConsoleFlow/actions)
 [![Nuget](https://img.shields.io/nuget/v/ConsoleFlow)](https://www.nuget.org/packages/ConsoleFlow/)
+[![Downloads](https://img.shields.io/nuget/dt/ConsoleFlow)](https://www.nuget.org/packages/ConsoleFlow/)
 [![License](https://img.shields.io/github/license/capra314cabra/ConsoleFlow)](https://github.com/capra314cabra/ConsoleFlow/blob/master/LICENSE)
 
 ![Icon](https://media.githubusercontent.com/media/capra314cabra/ConsoleFlow/master/img/icon-256.png)
