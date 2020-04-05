@@ -28,7 +28,7 @@ namespace ConsoleFlow
             get => m_Value;
             set
             {
-                if(m_Value != value)
+                if (m_Value != value)
                 {
                     m_Value = value;
                     InvokeRepaint();
@@ -125,12 +125,12 @@ namespace ConsoleFlow
             Console.BackgroundColor = OK_COLOR;
             for (int current = 0; current < m_Length; current++)
             {
-                if(current == progress)
+                if (current == progress)
                 {
                     Console.ResetColor();
                 }
 
-                if(current < progress)
+                if (current < progress)
                 {
                     Console.Write(" ");
                 }

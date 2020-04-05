@@ -39,7 +39,7 @@ namespace ConsoleFlow.Example
 
                 method.Invoke(examplesClass, null);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Clear();
                 Console.SetCursorPosition(0, 0);

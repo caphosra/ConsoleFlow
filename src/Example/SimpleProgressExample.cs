@@ -21,7 +21,7 @@ namespace ConsoleFlow.Example
 
             flow.Display();
 
-            while(true)
+            while (true)
             {
                 var key = Console.ReadKey(true).Key;
                 if (key == ConsoleKey.Escape)
