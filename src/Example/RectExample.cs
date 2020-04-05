@@ -10,12 +10,12 @@ namespace ConsoleFlow.Example
         {
             var flow = new ConsoleFlow
             (
-                new HorizontalBox
+                new HBox
                 (
                     new ConsoleRect(new ConsoleSize(6, 3), ConsoleColor.Red),
                     new ConsoleRect(new ConsoleSize(6, 3), ConsoleColor.Green)
                 ),
-                new HorizontalBox
+                new HBox
                 (
                     new ConsoleRect(new ConsoleSize(6, 3), ConsoleColor.Blue),
                     new ConsoleRect(new ConsoleSize(6, 3), ConsoleColor.Yellow)
