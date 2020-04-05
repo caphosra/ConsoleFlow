@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using ConsoleFlow.Core;
 
@@ -10,7 +11,7 @@ namespace ConsoleFlow
     /// Layout children UIs horizontally.
     ///
     /// </summary>
-    public class HorizontalBox : ConsoleUI
+    public class HBox : ConsoleUI
     {
         private List<ConsoleUI> m_UIs =
             new List<ConsoleUI>();
@@ -18,7 +19,7 @@ namespace ConsoleFlow
         public override ConsoleSize Size => m_Size;
         private ConsoleSize m_Size;
 
-        public HorizontalBox(params ConsoleUI[] children)
+        public HBox(params ConsoleUI[] children)
         {
             foreach (var child in children)
             {
@@ -42,16 +43,9 @@ namespace ConsoleFlow
 
         private void UpdateSize()
         {
-            int maxHeight = 0;
-            int width = 0;
-
-            foreach (var ui in m_UIs)
-            {
-                maxHeight = Math.Max(maxHeight, ui.Size.Height);
-                width += ui.Size.Width;
-            }
-
-            m_Size = new ConsoleSize(width, maxHeight);
+            var maxHeight = m_UIs.Max(ui => ui.Size.Height);
+            var width = m_UIs.Sum(ui => ui.Size.Width);
+            m_Size = new ConsoleSize(maxHeight, width);
         }
 
         public override void Display()
