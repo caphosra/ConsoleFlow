@@ -104,7 +104,7 @@ namespace ConsoleFlow
         {
             StringBuilder sb = new StringBuilder();
 
-            if(m_Value < 0f || 1f < m_Value)
+            if (m_Value < 0f || 1f < m_Value)
             {
                 throw new ArgumentOutOfRangeException("The value of progress bar should be on 0-1.");
             }
@@ -113,9 +113,9 @@ namespace ConsoleFlow
             sb.Append("|");
 
             var progress = (int)Math.Floor(m_Value * m_Length);
-            foreach(var count in Enumerable.Range(0, m_Length))
+            foreach (var count in Enumerable.Range(0, m_Length))
             {
-                if(progress >= count && progress != 0)
+                if (progress >= count && progress != 0)
                 {
                     sb.Append("*");
                 }

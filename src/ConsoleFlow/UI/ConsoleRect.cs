@@ -76,7 +76,7 @@ namespace ConsoleFlow
 
             Console.BackgroundColor = Color;
 
-            for(var y = 0; y < m_Size.Height; y++)
+            for (var y = 0; y < m_Size.Height; y++)
             {
                 var currentPos = startPos + new ConsoleVec2(0, y);
                 currentPos.Move();

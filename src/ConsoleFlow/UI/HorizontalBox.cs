@@ -20,7 +20,7 @@ namespace ConsoleFlow
 
         public HorizontalBox(params ConsoleUI[] children)
         {
-            foreach(var child in children)
+            foreach (var child in children)
             {
                 Add(child);
             }
@@ -45,7 +45,7 @@ namespace ConsoleFlow
             int maxHeight = 0;
             int width = 0;
 
-            foreach(var ui in m_UIs)
+            foreach (var ui in m_UIs)
             {
                 maxHeight = Math.Max(maxHeight, ui.Size.Height);
                 width += ui.Size.Width;
@@ -59,7 +59,7 @@ namespace ConsoleFlow
             var currentPos = ConsoleVec2.Zero;
             var startPos = ConsoleVec2.Current;
 
-            foreach(var ui in m_UIs)
+            foreach (var ui in m_UIs)
             {
                 var absolutePos = startPos + currentPos;
                 absolutePos.Move();

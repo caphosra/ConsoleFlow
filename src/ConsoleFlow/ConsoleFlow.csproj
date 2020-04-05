@@ -1,10 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <PropertyGroup>
     <PackageId>ConsoleFlow</PackageId>
     <Title>ConsoleFlow</Title>
@@ -21,21 +19,17 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-
   <PropertyGroup>
     <VersionPrefix>1.2.1</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="PInvoke.Kernel32" Version="0.6.6" />
+    <PackageReference Include="PInvoke.Kernel32" Version="0.6.6"/>
   </ItemGroup>
-
   <ItemGroup>
     <None Include="../../img/icon-512.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-
 </Project>
