@@ -13,11 +13,11 @@ namespace ConsoleFlow
     /// </summary>
     public class HBox : ConsoleUI
     {
-        private List<ConsoleUI> m_UIs =
+        protected List<ConsoleUI> m_UIs =
             new List<ConsoleUI>();
 
         public override ConsoleSize Size => m_Size;
-        private ConsoleSize m_Size;
+        protected ConsoleSize m_Size;
 
         public HBox(params ConsoleUI[] children)
         {
@@ -41,7 +41,7 @@ namespace ConsoleFlow
             UpdateSize();
         }
 
-        private void UpdateSize()
+        protected void UpdateSize()
         {
             var maxHeight = m_UIs.Max(ui => ui.Size.Height);
             var width = m_UIs.Sum(ui => ui.Size.Width);
@@ -64,12 +64,12 @@ namespace ConsoleFlow
             }
         }
 
-        private void OnReceiveRepaintEvent(ConsoleUI ui)
+        protected virtual void OnReceiveRepaintEvent(ConsoleUI ui)
         {
             InvokeRepaint();
         }
 
-        private void OnReceiveResizeEvent(ConsoleUI ui)
+        protected virtual void OnReceiveResizeEvent(ConsoleUI ui)
         {
             UpdateSize();
             InvokeResize();
