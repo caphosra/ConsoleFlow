@@ -24,7 +24,7 @@
     <VersionSuffix>alpha</VersionSuffix>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="PInvoke.Kernel32" Version="0.7.78"/>
+    <PackageReference Include="PInvoke.Kernel32" Version="0.7.104"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="../../img/icon-512.png">
